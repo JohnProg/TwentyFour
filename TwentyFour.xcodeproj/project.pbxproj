@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010B35581E61D572006D57F2 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B35571E61D572006D57F2 /* AddEntryViewController.swift */; };
 		0163B7541E604C4F00BE1829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7531E604C4F00BE1829 /* AppDelegate.swift */; };
 		0163B7571E604C4F00BE1829 /* TwentyFour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7551E604C4F00BE1829 /* TwentyFour.xcdatamodeld */; };
 		0163B7591E604C4F00BE1829 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7581E604C4F00BE1829 /* MasterViewController.swift */; };
@@ -16,6 +17,7 @@
 		0163B7631E604C4F00BE1829 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0163B7611E604C4F00BE1829 /* LaunchScreen.storyboard */; };
 		0163B76E1E604C4F00BE1829 /* TwentyFourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B76D1E604C4F00BE1829 /* TwentyFourTests.swift */; };
 		0163B7791E604C4F00BE1829 /* TwentyFourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7781E604C4F00BE1829 /* TwentyFourUITests.swift */; };
+		0163B78B1E6079BE00BE1829 /* LocationManagaer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B78A1E6079BE00BE1829 /* LocationManagaer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010B35571E61D572006D57F2 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEntryViewController.swift; sourceTree = "<group>"; };
 		0163B7501E604C4F00BE1829 /* TwentyFour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwentyFour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0163B7531E604C4F00BE1829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0163B7561E604C4F00BE1829 /* TwentyFour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TwentyFour.xcdatamodel; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		0163B7741E604C4F00BE1829 /* TwentyFourUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwentyFourUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0163B7781E604C4F00BE1829 /* TwentyFourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyFourUITests.swift; sourceTree = "<group>"; };
 		0163B77A1E604C4F00BE1829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0163B78A1E6079BE00BE1829 /* LocationManagaer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagaer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,13 +106,11 @@
 			isa = PBXGroup;
 			children = (
 				0163B7531E604C4F00BE1829 /* AppDelegate.swift */,
-				0163B7581E604C4F00BE1829 /* MasterViewController.swift */,
-				0163B75A1E604C4F00BE1829 /* DetailViewController.swift */,
-				0163B75C1E604C4F00BE1829 /* Main.storyboard */,
-				0163B75F1E604C4F00BE1829 /* Assets.xcassets */,
-				0163B7611E604C4F00BE1829 /* LaunchScreen.storyboard */,
 				0163B7641E604C4F00BE1829 /* Info.plist */,
-				0163B7551E604C4F00BE1829 /* TwentyFour.xcdatamodeld */,
+				0163B7891E60799D00BE1829 /* Helpers */,
+				0163B7871E60769200BE1829 /* Controllers */,
+				0163B7881E6076F200BE1829 /* Views */,
+				0163B7861E60767A00BE1829 /* Models */,
 			);
 			path = TwentyFour;
 			sourceTree = "<group>";
@@ -129,6 +131,42 @@
 				0163B77A1E604C4F00BE1829 /* Info.plist */,
 			);
 			path = TwentyFourUITests;
+			sourceTree = "<group>";
+		};
+		0163B7861E60767A00BE1829 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0163B7551E604C4F00BE1829 /* TwentyFour.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0163B7871E60769200BE1829 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				010B35571E61D572006D57F2 /* AddEntryViewController.swift */,
+				0163B7581E604C4F00BE1829 /* MasterViewController.swift */,
+				0163B75A1E604C4F00BE1829 /* DetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0163B7881E6076F200BE1829 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0163B75C1E604C4F00BE1829 /* Main.storyboard */,
+				0163B75F1E604C4F00BE1829 /* Assets.xcassets */,
+				0163B7611E604C4F00BE1829 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0163B7891E60799D00BE1829 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0163B78A1E6079BE00BE1829 /* LocationManagaer.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +308,8 @@
 			files = (
 				0163B7571E604C4F00BE1829 /* TwentyFour.xcdatamodeld in Sources */,
 				0163B7541E604C4F00BE1829 /* AppDelegate.swift in Sources */,
+				0163B78B1E6079BE00BE1829 /* LocationManagaer.swift in Sources */,
+				010B35581E61D572006D57F2 /* AddEntryViewController.swift in Sources */,
 				0163B7591E604C4F00BE1829 /* MasterViewController.swift in Sources */,
 				0163B75B1E604C4F00BE1829 /* DetailViewController.swift in Sources */,
 			);
@@ -520,6 +560,7 @@
 				0163B77F1E604C4F00BE1829 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0163B7801E604C4F00BE1829 /* Build configuration list for PBXNativeTarget "TwentyFourTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +569,7 @@
 				0163B7821E604C4F00BE1829 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0163B7831E604C4F00BE1829 /* Build configuration list for PBXNativeTarget "TwentyFourUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +578,7 @@
 				0163B7851E604C4F00BE1829 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
