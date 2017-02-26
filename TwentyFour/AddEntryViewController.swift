@@ -52,12 +52,21 @@ class AddEntryViewController: UIViewController {
             journalEntry.content = content
         } else {
             // FIXME: - Make an alert view
+            
+            //Demo code
+            journalEntry.content = "This is a demo content"
         }
         
         if let image = entryImage {
             //convert image to nsdata
-            //save image into the database
+            //save image into the context
         }
+        
+        //Save the data into the database
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        
+        //FIXME: - Missing the autoreturn to the master view
         
     }
 
