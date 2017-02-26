@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		010B35581E61D572006D57F2 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B35571E61D572006D57F2 /* AddEntryViewController.swift */; };
+		010B359E1E634549006D57F2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B359D1E634549006D57F2 /* TableViewCell.swift */; };
 		0163B7541E604C4F00BE1829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7531E604C4F00BE1829 /* AppDelegate.swift */; };
 		0163B7571E604C4F00BE1829 /* TwentyFour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7551E604C4F00BE1829 /* TwentyFour.xcdatamodeld */; };
 		0163B7591E604C4F00BE1829 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7581E604C4F00BE1829 /* MasterViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		010B35571E61D572006D57F2 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEntryViewController.swift; sourceTree = "<group>"; };
+		010B359D1E634549006D57F2 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		0163B7501E604C4F00BE1829 /* TwentyFour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwentyFour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0163B7531E604C4F00BE1829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0163B7561E604C4F00BE1829 /* TwentyFour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TwentyFour.xcdatamodel; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				010B35571E61D572006D57F2 /* AddEntryViewController.swift */,
 				0163B7581E604C4F00BE1829 /* MasterViewController.swift */,
+				010B359D1E634549006D57F2 /* TableViewCell.swift */,
 				0163B75A1E604C4F00BE1829 /* DetailViewController.swift */,
 			);
 			name = Controllers;
@@ -311,6 +314,7 @@
 				0163B78B1E6079BE00BE1829 /* LocationManagaer.swift in Sources */,
 				010B35581E61D572006D57F2 /* AddEntryViewController.swift in Sources */,
 				0163B7591E604C4F00BE1829 /* MasterViewController.swift in Sources */,
+				010B359E1E634549006D57F2 /* TableViewCell.swift in Sources */,
 				0163B75B1E604C4F00BE1829 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

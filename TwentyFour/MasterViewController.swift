@@ -10,6 +10,10 @@ import UIKit
 import CoreData
 
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
+    
+    //MARK: - Outlets
+    
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
@@ -63,9 +67,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         let journalEntry = self.fetchedResultsController.object(at: indexPath)
-        self.configureCell(cell, withJournalEntry: journalEntry)
+        configureCell(cell: cell, withEntry: journalEntry)
         return cell
     }
 
@@ -89,9 +93,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             }
         }
     }
-
-    func configureCell(_ cell: UITableViewCell, withJournalEntry entry: JournalEntry) {
-        cell.textLabel!.text = entry.title!.description
+    
+    func configureCell(cell: TableViewCell, withEntry entry: JournalEntry) {
+        cell.titleLabel.text = entry.title!
+        //cell.entryImageView = entry.image!
+        cell.contentLabel.text = entry.content!
     }
 
     // MARK: - Fetched results controller
@@ -152,7 +158,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             case .delete:
                 tableView.deleteRows(at: [indexPath!], with: .fade)
             case .update:
-                self.configureCell(tableView.cellForRow(at: indexPath!)!, withJournalEntry: anObject as! JournalEntry)
+                self.configureCell(cell: tableView.cellForRow(at: indexPath!)! as! TableViewCell, withEntry: anObject as! JournalEntry)
             case .move:
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
         }

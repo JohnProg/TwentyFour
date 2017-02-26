@@ -12,12 +12,16 @@ class AddEntryViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var charsLabel: UILabel!
+    @IBOutlet weak var charsLimitLabel: UILabel!
+    @IBOutlet weak var contentField: UITextField!
+    @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var moodSegmentedControl: UISegmentedControl!
+    
     
     // MARK: - Entry Varaibles
     
     var entryContent: String?
-    var entryImage: UIImage?
+    var entryImage: Data?
     var entryTitle: String?
     var entryDateCreation: Date = Date()
     
@@ -35,7 +39,7 @@ class AddEntryViewController: UIViewController {
     }
     
     // MARK: - Action
-    @IBAction func AddEntryJournalButtonAction() {
+    @IBAction func addEntryJournalButtonAction() {
         //Accessing to the view context in the Persistent Container
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
@@ -58,8 +62,7 @@ class AddEntryViewController: UIViewController {
         }
         
         if let image = entryImage {
-            //convert image to nsdata
-            //save image into the context
+            journalEntry.image = image as NSData?
         }
         
         //Save the data into the database
@@ -68,8 +71,25 @@ class AddEntryViewController: UIViewController {
         
         //FIXME: - Missing the autoreturn to the master view
         
+        print(journalEntry)
+        
     }
 
+    @IBAction func addImageButtonAction(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func moodSegmentedContolAction(_ sender: UISegmentedControl) {
+    }
+    
+    @IBAction func addLocationButtonAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func contentFieldDidEnd(_ sender: UITextField) {
+        entryContent = sender.text
+    }
+   
+    
     /*
     // MARK: - Navigation
 
@@ -87,6 +107,9 @@ class AddEntryViewController: UIViewController {
         if let title = entryTitle {
             titleLabel.text = title
         }
+        
+        let imageData = imageToData(from: imageButton.currentImage!)
+        setImageEntry(with: imageData)
     }
     
     func setTitleFrom(date: Date) {
@@ -98,5 +121,14 @@ class AddEntryViewController: UIViewController {
         
         //applaying the styles to the date
         entryTitle = formatter.string(from: date)
+    }
+    
+    func imageToData(from image: UIImage) -> Data {
+        let data = UIImageJPEGRepresentation(image, 1.0)!
+        return data
+    }
+    
+    func setImageEntry(with image: Data) {
+        entryImage = image
     }
 }
