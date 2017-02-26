@@ -310,9 +310,6 @@
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                                                <connections>
-                                                                    <action selector="contentFieldDidEnd:" destination="gGZ-kS-hbP" eventType="editingDidEnd" id="cGJ-FB-hum"/>
-                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>

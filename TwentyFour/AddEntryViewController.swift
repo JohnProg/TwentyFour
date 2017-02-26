@@ -52,7 +52,7 @@ class AddEntryViewController: UIViewController {
             // FIXME: - Make an alert view
         }
         
-        if let content = entryContent {
+        if let content = contentField.text { 
             journalEntry.content = content
         } else {
             // FIXME: - Make an alert view
@@ -84,11 +84,6 @@ class AddEntryViewController: UIViewController {
     
     @IBAction func addLocationButtonAction(_ sender: UIButton) {
     }
-    
-    @IBAction func contentFieldDidEnd(_ sender: UITextField) {
-        entryContent = sender.text
-    }
-   
     
     /*
     // MARK: - Navigation
