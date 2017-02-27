@@ -19,7 +19,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setTitleFromCurrentDate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +109,19 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             //FIXME: - convert into hide label
             cell.locationLabel.text = "no location"
         }
+    }
+    
+    
+    /** This func will set the Title starting from a date: Date*/
+    func setTitleFromCurrentDate() {
+        let date = Date()
+        //creating the formatter and choosing the styles
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        
+        //updating the title
+        self.title = formatter.string(from: date)
     }
 }
 
