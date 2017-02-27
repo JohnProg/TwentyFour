@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AddEntryViewController: UIViewController {
     
@@ -20,10 +21,16 @@ class AddEntryViewController: UIViewController {
     
     // MARK: - Entry Varaibles
     
-    var entryContent: String?
-    var entryImage: Data?
-    var entryTitle: String?
-    var entryDateCreation: Date = Date()
+    fileprivate var entryContent: String = "This is a demo content"
+    fileprivate var entryImage: UIImage?
+    fileprivate var entryTitle: String?
+    fileprivate var entryDateCreation: Date = Date()
+    fileprivate var entryLocation: CLLocation?
+    fileprivate var entryMood: JournalEntry.Mood?
+    
+    // MARK: - location Varaibles
+    fileprivate var locationManager: LocationManager!
+    
     
 
     override func viewDidLoad() {
@@ -43,35 +50,14 @@ class AddEntryViewController: UIViewController {
         //Accessing to the view context in the Persistent Container
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        let journalEntry = JournalEntry(context: context)
-        journalEntry.dateCreation = entryDateCreation as NSDate?
+        JournalEntry.journalEntryWIth(dateCreation: entryDateCreation, title: entryTitle!, content: entryContent, image: entryImage!, mood: entryMood!, location: entryLocation, context: context)
         
-        if let title = entryTitle {
-            journalEntry.title = title
-        } else {
-            // FIXME: - Make an alert view
-        }
-        
-        if let content = contentField.text { 
-            journalEntry.content = content
-        } else {
-            // FIXME: - Make an alert view
-            
-            //Demo code
-            journalEntry.content = "This is a demo content"
-        }
-        
-        if let image = entryImage {
-            journalEntry.image = image as NSData?
-        }
         
         //Save the data into the database
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
         
         //FIXME: - Missing the autoreturn to the master view
-        
-        print(journalEntry)
         
     }
 
@@ -83,6 +69,15 @@ class AddEntryViewController: UIViewController {
     }
     
     @IBAction func addLocationButtonAction(_ sender: UIButton) {
+        locationManager = LocationManager()
+        locationManager.onLocationFix = { placemark, error in
+            if let placemark = placemark {
+                self.entryLocation = placemark.location
+                guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
+                
+                sender.setTitle("\(name), \(city), \(area)", for: .normal)
+            }
+        }
     }
     
     /*
@@ -99,12 +94,8 @@ class AddEntryViewController: UIViewController {
     // MARK: - Helpers
     func setupView() {
         setTitleFrom(date: entryDateCreation)
-        if let title = entryTitle {
-            titleLabel.text = title
-        }
-        
-        let imageData = imageToData(from: imageButton.currentImage!)
-        setImageEntry(with: imageData)
+        setImageEntry(with: imageButton.currentImage!)
+        setMoodEntry(segment: moodSegmentedControl)
     }
     
     func setTitleFrom(date: Date) {
@@ -116,14 +107,22 @@ class AddEntryViewController: UIViewController {
         
         //applaying the styles to the date
         entryTitle = formatter.string(from: date)
+        
+        //Updatting the title label
+        titleLabel.text = entryTitle
     }
     
-    func imageToData(from image: UIImage) -> Data {
-        let data = UIImageJPEGRepresentation(image, 1.0)!
-        return data
-    }
-    
-    func setImageEntry(with image: Data) {
+    func setImageEntry(with image: UIImage) {
         entryImage = image
+    }
+    
+    func setMoodEntry(segment: UISegmentedControl) {
+        let index = segment.selectedSegmentIndex
+        switch (index) {
+            case 0: self.entryMood = JournalEntry.Mood.happy
+            case 1: self.entryMood = JournalEntry.Mood.good
+            case 2: self.entryMood = JournalEntry.Mood.bad
+        default: self.entryMood = JournalEntry.Mood.good
+        }
     }
 }

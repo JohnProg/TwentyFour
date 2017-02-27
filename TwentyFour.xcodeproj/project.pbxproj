@@ -19,6 +19,8 @@
 		0163B76E1E604C4F00BE1829 /* TwentyFourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B76D1E604C4F00BE1829 /* TwentyFourTests.swift */; };
 		0163B7791E604C4F00BE1829 /* TwentyFourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7781E604C4F00BE1829 /* TwentyFourUITests.swift */; };
 		0163B78B1E6079BE00BE1829 /* LocationManagaer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B78A1E6079BE00BE1829 /* LocationManagaer.swift */; };
+		01F46C3A1E641303004B34C2 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F46C391E641303004B34C2 /* JournalEntry.swift */; };
+		01F46C3C1E641310004B34C2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F46C3B1E641310004B34C2 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		0163B7781E604C4F00BE1829 /* TwentyFourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyFourUITests.swift; sourceTree = "<group>"; };
 		0163B77A1E604C4F00BE1829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0163B78A1E6079BE00BE1829 /* LocationManagaer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagaer.swift; sourceTree = "<group>"; };
+		01F46C391E641303004B34C2 /* JournalEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
+		01F46C3B1E641310004B34C2 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				0163B7551E604C4F00BE1829 /* TwentyFour.xcdatamodeld */,
+				01F46C391E641303004B34C2 /* JournalEntry.swift */,
+				01F46C3B1E641310004B34C2 /* Location.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -311,7 +317,9 @@
 			files = (
 				0163B7571E604C4F00BE1829 /* TwentyFour.xcdatamodeld in Sources */,
 				0163B7541E604C4F00BE1829 /* AppDelegate.swift in Sources */,
+				01F46C3A1E641303004B34C2 /* JournalEntry.swift in Sources */,
 				0163B78B1E6079BE00BE1829 /* LocationManagaer.swift in Sources */,
+				01F46C3C1E641310004B34C2 /* Location.swift in Sources */,
 				010B35581E61D572006D57F2 /* AddEntryViewController.swift in Sources */,
 				0163B7591E604C4F00BE1829 /* MasterViewController.swift in Sources */,
 				010B359E1E634549006D57F2 /* TableViewCell.swift in Sources */,
