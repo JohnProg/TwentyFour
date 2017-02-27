@@ -116,10 +116,10 @@ class AddEntryViewController: UIViewController {
         formatter.dateStyle = .long
         formatter.timeStyle = .none
         
-        //applaying the styles to the date
+        //applaying the styles to the date and saving it
         entryTitle = formatter.string(from: date)
         
-        //Updatting the title label
+        //Updating the title label
         titleLabel.text = entryTitle
     }
     
