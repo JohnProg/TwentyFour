@@ -14,7 +14,7 @@ import CoreData
 extension JournalEntry {
     enum Mood: String, RawRepresentable {
         case happy = "happy"
-        case good = "good"
+        case avarage = "avarage"
         case bad = "bad"
     }
 }

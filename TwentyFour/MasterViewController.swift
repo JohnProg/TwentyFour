@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
@@ -95,9 +96,29 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     func configureCell(cell: TableViewCell, withEntry entry: JournalEntry) {
+        print(entry.location?.longitude)
+        print(entry.mood)
         cell.titleLabel.text = entry.title!
-        //cell.entryImageView = entry.image!
+        cell.entryImageView.image = UIImage(data: entry.image! as Data)
         cell.contentLabel.text = entry.content!
+        
+        switch (entry.mood!) {
+            case "happy":
+                print("happy")
+                cell.moodIconView.image = #imageLiteral(resourceName: "icn_happy")
+            case "avarage": cell.moodIconView.image = #imageLiteral(resourceName: "icn_average")
+            print("avarage")
+            case "bad": cell.moodIconView.image = #imageLiteral(resourceName: "icn_bad")
+            print("bad")
+        default: cell.moodIconView.image = #imageLiteral(resourceName: "icn_average")
+            print("default")
+        }
+        
+        if let location = entry.location {
+            cell.locationLabel.text = "\(location.latitude), \(location.longitude)"
+        } else { 
+            cell.locationLabel.text = "no location"
+        }
     }
 
     // MARK: - Fetched results controller

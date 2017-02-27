@@ -50,6 +50,13 @@ class AddEntryViewController: UIViewController {
         //Accessing to the view context in the Persistent Container
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
+        
+        //FIXME: - This is not the proper way
+        if contentField.text != "" {
+            self.entryContent = contentField.text!
+        }
+        
+        
         JournalEntry.journalEntryWIth(dateCreation: entryDateCreation, title: entryTitle!, content: entryContent, image: entryImage!, mood: entryMood!, location: entryLocation, context: context)
         
         
@@ -66,6 +73,7 @@ class AddEntryViewController: UIViewController {
     }
     
     @IBAction func moodSegmentedContolAction(_ sender: UISegmentedControl) {
+        setMoodEntry(segment: sender)
     }
     
     @IBAction func addLocationButtonAction(_ sender: UIButton) {
@@ -117,12 +125,16 @@ class AddEntryViewController: UIViewController {
     }
     
     func setMoodEntry(segment: UISegmentedControl) {
-        let index = segment.selectedSegmentIndex
-        switch (index) {
-            case 0: self.entryMood = JournalEntry.Mood.happy
-            case 1: self.entryMood = JournalEntry.Mood.good
-            case 2: self.entryMood = JournalEntry.Mood.bad
-        default: self.entryMood = JournalEntry.Mood.good
+        if segment.selectedSegmentIndex == 0 {
+            self.entryMood = JournalEntry.Mood.happy
+        }
+        
+        if segment.selectedSegmentIndex == 1 {
+            self.entryMood = JournalEntry.Mood.avarage
+        }
+        
+        if segment.selectedSegmentIndex == 2 {
+            self.entryMood = JournalEntry.Mood.bad
         }
     }
 }
