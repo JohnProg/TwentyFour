@@ -13,26 +13,21 @@ import CoreLocation
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     
-    //MARK: - Outlets
-    
-
-    var detailViewController: DetailViewController? = nil
-    var managedObjectContext: NSManagedObjectContext? = nil
+    //MARK: - Variables
+    var journalEntries: [JournalEntry] = []
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        if let split = self.splitViewController {
-            let controllers = split.viewControllers
-            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        //get the data
+        getData()
+        //reload the table
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,11 +42,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-            let object = self.fetchedResultsController.object(at: indexPath)
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
+            //TODO: - show details for entry
             }
         }
     }
@@ -59,144 +50,62 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.fetchedResultsController.sections?.count ?? 0
+        //FIXME: - this should be divided into different sections, depending on the month
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+        return journalEntries.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        let journalEntry = self.fetchedResultsController.object(at: indexPath)
+        let journalEntry = self.journalEntries[indexPath.row]
         configureCell(cell: cell, withEntry: journalEntry)
         return cell
     }
+    
+    
 
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let context = self.fetchedResultsController.managedObjectContext
-            context.delete(self.fetchedResultsController.object(at: indexPath))
-                
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
+    //MARK: - Helpers
+    
+    /** This func will get the data from the CoreData Database */
+    func getData() {
+        //as always I need a context
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        //try the fetch
+        do {
+            journalEntries = try context.fetch(JournalEntry.fetchRequest())
+        } catch {
+            //FIXME: - Handle the erros
+            print("Fetch failed")
         }
     }
     
+    /**This func will style the cell prperly */
     func configureCell(cell: TableViewCell, withEntry entry: JournalEntry) {
-        print(entry.location?.longitude)
-        print(entry.mood)
+        
+        //setting the easy stuff
         cell.titleLabel.text = entry.title!
         cell.entryImageView.image = UIImage(data: entry.image! as Data)
         cell.contentLabel.text = entry.content!
         
+        //setting the mood
         switch (entry.mood!) {
-            case "happy":
-                print("happy")
-                cell.moodIconView.image = #imageLiteral(resourceName: "icn_happy")
+            case "happy": cell.moodIconView.image = #imageLiteral(resourceName: "icn_happy")
             case "avarage": cell.moodIconView.image = #imageLiteral(resourceName: "icn_average")
-            print("avarage")
             case "bad": cell.moodIconView.image = #imageLiteral(resourceName: "icn_bad")
-            print("bad")
-        default: cell.moodIconView.image = #imageLiteral(resourceName: "icn_average")
-            print("default")
+            default: cell.moodIconView.image = #imageLiteral(resourceName: "icn_average")
         }
         
+        //setting the location
         if let location = entry.location {
             cell.locationLabel.text = "\(location.latitude), \(location.longitude)"
-        } else { 
+        } else {
+            //FIXME: - convert into hide label
             cell.locationLabel.text = "no location"
         }
     }
-
-    // MARK: - Fetched results controller
-
-    var fetchedResultsController: NSFetchedResultsController<JournalEntry> {
-        if _fetchedResultsController != nil {
-            return _fetchedResultsController!
-        }
-        
-        let fetchRequest: NSFetchRequest<JournalEntry> = JournalEntry.fetchRequest()
-        
-        // Set the batch size to a suitable number.
-        fetchRequest.fetchBatchSize = 20
-        
-        // Edit the sort key as appropriate.
-        let sortDescriptor = NSSortDescriptor(key: "dateCreation", ascending: false)
-        
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Edit the section name key path and cache name if appropriate.
-        // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
-        aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
-        
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-             // Replace this implementation with code to handle the error appropriately.
-             // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-             let nserror = error as NSError
-             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-        
-        return _fetchedResultsController!
-    }    
-    var _fetchedResultsController: NSFetchedResultsController<JournalEntry>? = nil
-
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView.beginUpdates()
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-            case .insert:
-                self.tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-            case .delete:
-                self.tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-            default:
-                return
-        }
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-            case .insert:
-                tableView.insertRows(at: [newIndexPath!], with: .fade)
-            case .delete:
-                tableView.deleteRows(at: [indexPath!], with: .fade)
-            case .update:
-                self.configureCell(cell: tableView.cellForRow(at: indexPath!)! as! TableViewCell, withEntry: anObject as! JournalEntry)
-            case .move:
-                tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        }
-    }
-
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView.endUpdates()
-    }
-
-    /*
-     // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
-     
-     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-         // In the simplest, most efficient, case, reload the table view.
-         self.tableView.reloadData()
-     }
-     */
-
 }
 
