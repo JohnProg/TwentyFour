@@ -14,7 +14,7 @@ class AddEntryViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var charsLimitLabel: UILabel!
-    @IBOutlet weak var contentField: UITextField!
+    @IBOutlet weak var contentField: UITextView!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var moodSegmentedControl: UISegmentedControl!
     
@@ -35,6 +35,9 @@ class AddEntryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.black
+        
 
         // Do any additional setup after loading the view.
         setupView()
@@ -50,13 +53,12 @@ class AddEntryViewController: UIViewController {
         //Accessing to the view context in the Persistent Container
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        
         //FIXME: - This is not the proper way
         if contentField.text != "" {
             self.entryContent = contentField.text!
         }
         
-        
+        //Creating the journal Entry in the context
         JournalEntry.journalEntryWIth(dateCreation: entryDateCreation, title: entryTitle!, content: entryContent, image: entryImage!, mood: entryMood!, location: entryLocation, context: context)
         
         
@@ -64,7 +66,8 @@ class AddEntryViewController: UIViewController {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
         
-        //FIXME: - Missing the autoreturn to the master view
+        //Fpop back to the navigation controller
+        navigationController!.popViewController(animated: true)
         
     }
 
@@ -88,24 +91,24 @@ class AddEntryViewController: UIViewController {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     // MARK: - Helpers
+    /** This func will style the view, and will setup the basic variables for the entry creation */
     func setupView() {
+        
+        
+        
+        let borderColor: UIColor = .lightGray
+        contentField.layer.borderColor = borderColor.cgColor;
+        contentField.layer.borderWidth = 1.0;
+        contentField.layer.cornerRadius = 5.0;
+        
         setTitleFrom(date: entryDateCreation)
         setImageEntry(with: imageButton.currentImage!)
         setMoodEntry(segment: moodSegmentedControl)
     }
     
+    /** This func will set the Title starting from a date: Date*/
     func setTitleFrom(date: Date) {
         
         //creating the formatter and choosing the styles
@@ -120,10 +123,12 @@ class AddEntryViewController: UIViewController {
         titleLabel.text = entryTitle
     }
     
+    /**This func will set the image of the Entry */
     func setImageEntry(with image: UIImage) {
         entryImage = image
     }
     
+    /**This func will set the mood of the Entry */
     func setMoodEntry(segment: UISegmentedControl) {
         if segment.selectedSegmentIndex == 0 {
             self.entryMood = JournalEntry.Mood.happy
