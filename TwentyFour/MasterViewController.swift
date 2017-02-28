@@ -109,6 +109,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             //FIXME: - convert into hide label
             cell.locationLabel.text = "no location"
         }
+ 
+        
     }
     
     
