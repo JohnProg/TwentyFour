@@ -15,6 +15,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     //MARK: - Variables
     var journalEntries: [JournalEntry] = []
+    fileprivate var locationManager: LocationManager!
 
 
     override func viewDidLoad() {
@@ -103,14 +104,21 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
         
         //setting the location
-        if let location = entry.location {
-            cell.locationLabel.text = "\(location.latitude), \(location.longitude)"
-        } else {
-            //FIXME: - convert into hide label
-            cell.locationLabel.text = "no location"
-        }
- 
         
+        
+        locationManager = LocationManager()
+        locationManager.onLocationFix = { placemark, error in
+            if let placemark = placemark {
+                guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
+                
+                cell.locationLabel.text = "\(name), \(city), \(area)"
+            }
+        }
+        guard let location = entry.location else {
+            cell.locationLabel.text = ""
+            return
+        }
+        locationManager.reverseGeoLoc(coordinate: (location.latitude, location.longitude))
     }
     
     
@@ -125,5 +133,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         //updating the title
         self.title = formatter.string(from: date)
     }
+    
+    
 }
 

@@ -49,8 +49,20 @@ extension LocationManager: CLLocationManagerDelegate {
                 onLocationFix(placemarks?.first, error as NSError?)
             }
         }
+    }
+    
+    /** This func will do the reverse Geolocation: Param: (latitude, longitude) */
+    func reverseGeoLoc(coordinate: (Double, Double)) {
+        let latitude :CLLocationDegrees = coordinate.0
+        let longitude :CLLocationDegrees = coordinate.1
         
+        let location = CLLocation(latitude: latitude, longitude: longitude)
         
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let onLocationFix = self.onLocationFix {
+                onLocationFix(placemarks?.first, error as NSError?)
+            }
+        }
     }
 }
 
