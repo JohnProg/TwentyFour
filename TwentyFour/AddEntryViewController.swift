@@ -35,12 +35,14 @@ class AddEntryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.black
-        
 
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.black
         setupView()
+        
+        //Tapping in the view will close the keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,8 +98,6 @@ class AddEntryViewController: UIViewController {
     /** This func will style the view, and will setup the basic variables for the entry creation */
     func setupView() {
         
-        
-        
         let borderColor: UIColor = .lightGray
         contentField.layer.borderColor = borderColor.cgColor;
         contentField.layer.borderWidth = 1.0;
@@ -142,4 +142,11 @@ class AddEntryViewController: UIViewController {
             self.entryMood = JournalEntry.Mood.bad
         }
     }
+
+    //This func will close the the keyboard
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
 }

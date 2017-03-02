@@ -60,7 +60,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="220"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dhz-ix-wrJ" id="f4h-Gv-Mfp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trU-D8-zEI">
@@ -269,7 +269,10 @@
                                                                     <constraint firstAttribute="height" constant="150" id="Nef-ua-XDQ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="gGZ-kS-hbP" id="6HG-CV-jZR"/>
+                                                                </connections>
                                                             </textView>
                                                         </subviews>
                                                     </stackView>
