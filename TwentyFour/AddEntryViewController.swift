@@ -68,7 +68,7 @@ class AddEntryViewController: UIViewController {
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             
             
-            //Fpop back to the navigation controller
+            //pop back to the navigation controller
             navigationController!.popViewController(animated: true)
         } catch ErrorType.entryContentIsEmpty {
             self.displayAlert(title: "\(ErrorType.entryContentIsEmpty)", message: ErrorType.entryContentIsEmpty.rawValue)

@@ -44,15 +44,6 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //MARK: Segues
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editEntry" {
-            let controller = (segue.destination) as! EditViewController
-        }
-        
-    }
 
 
     //MARK: - Actions
@@ -147,7 +138,7 @@ class DetailViewController: UIViewController {
         //creating the formatter and choosing the styles
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        formatter.timeStyle = .none
+        formatter.timeStyle = .short
         
         //updating the title
         return formatter.string(from: date)
@@ -163,13 +154,13 @@ class DetailViewController: UIViewController {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
         
-        //Fpop back to the navigation controller
+        //pop back to the navigation controller
         navigationController!.popViewController(animated: true)
     }
     
     /**This func will displau the edit view */
     func displayEditView() {
-        guard let vc = UIStoryboard(name:"Edit", bundle:nil).instantiateViewController(withIdentifier: "edit") as? EditViewController else {
+        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "edit") as? EditViewController else {
             print("Could not instantiate view controller with identifier of type EditViewController")
             return
         }

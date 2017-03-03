@@ -122,10 +122,10 @@
             </objects>
             <point key="canvasLocation" x="2836" y="-106.59670164917542"/>
         </scene>
-        <!--Edit Entry-->
+        <!--Edit-->
         <scene sceneID="hVw-uD-Ks9">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="eg8-7T-kYj" customClass="EditViewController" customModule="TwentyFour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="edit" title="Edit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eg8-7T-kYj" userLabel="Edit" customClass="EditViewController" customModule="TwentyFour" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="51y-ra-F8l"/>
                         <viewControllerLayoutGuide type="bottom" id="kSl-Nu-ZWX"/>
@@ -134,33 +134,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="NuX-Tx-wXQ">
-                                <rect key="frame" x="16" y="36" width="343" height="150"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 300" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C4-zg-oxK">
+                                <rect key="frame" x="32" y="254" width="311" height="15.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fED-2E-NjP">
+                                <rect key="frame" x="32" y="80" width="311" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="C1C-1W-i9n"/>
+                                    <constraint firstAttribute="height" constant="150" id="9I1-V9-6nZ"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</string>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eg8-7T-kYj" id="rdQ-c7-Zx2"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NuX-Tx-wXQ" firstAttribute="top" secondItem="51y-ra-F8l" secondAttribute="bottom" constant="16" id="20b-06-M4r"/>
-                            <constraint firstItem="NuX-Tx-wXQ" firstAttribute="leading" secondItem="yO9-cM-zwN" secondAttribute="leadingMargin" id="DJl-Vd-Hdt"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="NuX-Tx-wXQ" secondAttribute="trailing" id="Ltb-5V-Mzo"/>
+                            <constraint firstItem="9C4-zg-oxK" firstAttribute="top" secondItem="fED-2E-NjP" secondAttribute="bottom" constant="24" id="2l7-it-Jno"/>
+                            <constraint firstItem="fED-2E-NjP" firstAttribute="top" secondItem="51y-ra-F8l" secondAttribute="bottom" constant="60" id="6uo-wV-rFU"/>
+                            <constraint firstItem="fED-2E-NjP" firstAttribute="leading" secondItem="yO9-cM-zwN" secondAttribute="leadingMargin" constant="16" id="FGU-ia-gcO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fED-2E-NjP" secondAttribute="trailing" constant="16" id="IRM-ga-5Bl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9C4-zg-oxK" secondAttribute="trailing" constant="16" id="XUu-pt-9jX"/>
+                            <constraint firstItem="9C4-zg-oxK" firstAttribute="leading" secondItem="yO9-cM-zwN" secondAttribute="leadingMargin" constant="16" id="pQv-hq-Vhi"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Edit Entry" id="Mqg-1h-5kq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="woh-ye-rMn"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="woh-ye-rMn">
+                            <connections>
+                                <action selector="saveAction:" destination="eg8-7T-kYj" id="Iv4-fA-f3I"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="charsLabel" destination="9C4-zg-oxK" id="bRC-Ro-feW"/>
+                        <outlet property="textView" destination="fED-2E-NjP" id="m9f-8B-H3s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8D-nY-cMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3588" y="-106"/>
+            <point key="canvasLocation" x="3588" y="-106.59670164917542"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
