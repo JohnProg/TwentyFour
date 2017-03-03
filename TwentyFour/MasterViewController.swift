@@ -80,7 +80,16 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         
         //try the fetch
         do {
-            journalEntries = try context.fetch(JournalEntry.fetchRequest())
+            //Creating a request
+            let fetchRequest: NSFetchRequest<JournalEntry> = JournalEntry.fetchRequest()
+            //Creating a Sort Descriptor
+            let sortDescriptor = NSSortDescriptor(key: "dateCreation", ascending: false)
+            //Set the sort Desriptor to the request
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            // Set the batch size to a suitable number.
+            fetchRequest.fetchBatchSize = 20
+            //Requesting..
+            journalEntries = try context.fetch(fetchRequest)
         } catch {
             //FIXME: - Handle the erros
             print("Fetch failed")
@@ -104,8 +113,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
         
         //setting the location
-        
-        
         locationManager = LocationManager()
         locationManager.onLocationFix = { placemark, error in
             if let placemark = placemark {
