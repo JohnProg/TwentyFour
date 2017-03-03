@@ -54,7 +54,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        //FIXME: - ì
+        //FIXME: - this should be divided into different sections, depending on the month
         return 1
     }
 
