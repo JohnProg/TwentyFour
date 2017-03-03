@@ -269,7 +269,7 @@
                                                                     <constraint firstAttribute="height" constant="150" id="Nef-ua-XDQ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="gGZ-kS-hbP" id="6HG-CV-jZR"/>
                                                                 </connections>
@@ -321,31 +321,38 @@
                                                     <constraint firstAttribute="height" constant="30" id="4bJ-M1-94d"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLs-yb-CB9">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ZLs-yb-CB9">
                                                 <rect key="frame" x="0.0" y="30" width="343" height="80"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVW-FQ-TOD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="115" height="80"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="55" height="80"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6O-SB-K2D">
-                                                        <rect key="frame" x="115" y="0.0" width="114" height="80"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="mys-yw-MEF"/>
+                                                            <constraint firstAttribute="width" constant="55" id="abY-Ts-Z8b"/>
                                                         </constraints>
-                                                        <state key="normal" image="New picture icon"/>
+                                                    </view>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="New picture icon" translatesAutoresizingMaskIntoConstraints="NO" id="3hD-QJ-TkX">
+                                                        <rect key="frame" x="79" y="0.0" width="115" height="80"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="115" id="FOy-dO-vty"/>
+                                                            <constraint firstAttribute="height" constant="80" id="P7q-jC-ZeU"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6O-SB-K2D">
+                                                        <rect key="frame" x="218" y="0.0" width="40" height="80"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="9en-tJ-i02"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.30196078430000001" green="0.63921568630000003" blue="0.74901960779999999" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                                         <connections>
                                                             <action selector="addImageButtonAction:" destination="gGZ-kS-hbP" eventType="touchUpInside" id="uCn-eF-QFu"/>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-r9-NB5">
-                                                        <rect key="frame" x="229" y="0.0" width="114" height="80"/>
+                                                        <rect key="frame" x="282" y="0.0" width="61" height="80"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="P6O-SB-K2D" firstAttribute="centerX" secondItem="ZLs-yb-CB9" secondAttribute="centerX" id="QnW-kg-e4e"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
@@ -459,7 +466,7 @@
                         <outlet property="activityIndicator" destination="3GX-Xb-iFD" id="wY5-WX-LBB"/>
                         <outlet property="charsLimitLabel" destination="wZm-zD-1Ky" id="PSm-5a-qzk"/>
                         <outlet property="contentField" destination="jVK-Bq-ewZ" id="DA0-hU-Xqu"/>
-                        <outlet property="imageButton" destination="P6O-SB-K2D" id="YuR-KC-mtK"/>
+                        <outlet property="imageView" destination="3hD-QJ-TkX" id="zac-Gt-U16"/>
                         <outlet property="moodSegmentedControl" destination="YjF-ud-4jX" id="ofB-7L-DNs"/>
                         <outlet property="titleLabel" destination="Vr1-Nj-7TY" id="P7v-R7-lwI"/>
                     </connections>

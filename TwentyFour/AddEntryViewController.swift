@@ -15,7 +15,7 @@ class AddEntryViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var charsLimitLabel: UILabel!
     @IBOutlet weak var contentField: UITextView!
-    @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var moodSegmentedControl: UISegmentedControl!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -75,14 +75,31 @@ class AddEntryViewController: UIViewController {
     }
 
     @IBAction func addImageButtonAction(_ sender: UIButton) {
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a Source", preferredStyle: .actionSheet)
 
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
             //Code
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else {
+                //FIXME: - present an alert
+                print("camera non aviable")
+            }
+            
         }))
+        
         actionSheet.addAction(UIAlertAction(title: "Library", style: .default, handler: { (action:UIAlertAction) in
             //Code
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
         }))
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(actionSheet, animated: true, completion: nil)
@@ -128,7 +145,7 @@ class AddEntryViewController: UIViewController {
         contentField.layer.cornerRadius = 5.0;
         
         setTitleFrom(date: entryDateCreation)
-        setImageEntry(with: imageButton.currentImage!)
+        setImageEntry(with: imageView.image!)
         setMoodEntry(segment: moodSegmentedControl)
         
         activityIndicator.isHidden = true
@@ -173,6 +190,23 @@ class AddEntryViewController: UIViewController {
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+}
+
+
+extension AddEntryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info [UIImagePickerControllerOriginalImage] as! UIImage
+        
+        imageView.image = image
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
 }

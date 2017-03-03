@@ -51,9 +51,6 @@ extension JournalEntry {
             //creating the location
             let entryLocation = Location.locationWith(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, context: context)
             
-            print("")
-            print("LATITUDE")
-            print(location.coordinate.latitude)
             //adding the location
             self.location = entryLocation
         }
