@@ -102,7 +102,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="March 1st, 2017" id="mOI-FS-AaM">
                         <barButtonItem key="backBarButtonItem" title="Back" id="MQT-tw-8fb"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="uyN-cN-h3F"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="uyN-cN-h3F">
+                            <connections>
+                                <action selector="editAction:" destination="JEX-9P-axG" id="OKR-i2-QSA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="DsX-RY-IgP" id="hBW-6h-wZk"/>

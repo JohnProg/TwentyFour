@@ -45,6 +45,42 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK - Actions
+    
+    
+    @IBAction func editAction(_ sender: Any) {
+        
+        //Creating an Action Sheet
+        let actionSheet = UIAlertController(title: "Edit Action", message: "Choose what would you like to do", preferredStyle: .actionSheet)
+        
+        //Adding action to the Action Sheet: for Vamera
+        actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action:UIAlertAction) in
+            //Code
+            
+        }))
+        
+        //Adding action to the Action Sheet: for Library
+        actionSheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action:UIAlertAction) in
+            //displaying the alert to ask confirmation
+            let alertController = UIAlertController(title: "Delete Entry", message: "Are you sure you want to delete this entry?", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "Confirm", style: .destructive, handler: {(alert: UIAlertAction!) in self.deleteEntry(entry: self.journalEntry!)})
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(confirm)
+            alertController.addAction(cancel)
+            
+            
+            
+            self.present(alertController, animated: true, completion: nil)
+        }))
+        
+        //Adding action to the Action Sheet: for Cancel
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        //Presenting the Action Sheet
+        self.present(actionSheet, animated: true, completion: nil)
+        
+    }
+    
 
     // MARK: - Helpers
     
@@ -101,6 +137,20 @@ class DetailViewController: UIViewController {
         
         //updating the title
         return formatter.string(from: date)
+    }
+    
+    /**This func will delete the entry from the database */
+    func deleteEntry(entry: JournalEntry) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context.delete(entry)
+        
+        
+        //Save the data into the database
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        
+        //Fpop back to the navigation controller
+        navigationController!.popViewController(animated: true)
     }
  
 
