@@ -206,7 +206,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="spQ-hE-hKd" userLabel="Left Stack View">
                                                     <rect key="frame" x="0.0" y="0.0" width="48" height="187.5"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" image="Camera Oval" translatesAutoresizingMaskIntoConstraints="NO" id="KQV-9V-kR2">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" image="Camera Oval" translatesAutoresizingMaskIntoConstraints="NO" id="KQV-9V-kR2">
                                                             <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="48" id="ZYa-lc-epp"/>
