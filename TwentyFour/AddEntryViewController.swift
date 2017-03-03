@@ -29,9 +29,10 @@ class AddEntryViewController: UIViewController {
     fileprivate var entryLocation: CLLocation?
     fileprivate var entryMood: JournalEntry.Mood?
     
-    // MARK: - location Varaibles
+    // MARK: - Varaibles
+    fileprivate let limitOfChars = 300 //Change this constant to change the limit of chars accepted in the textView
     fileprivate var locationManager: LocationManager!
-    
+    fileprivate var charsWritten: Int = 0
     
 
     override func viewDidLoad() {
@@ -56,21 +57,26 @@ class AddEntryViewController: UIViewController {
         //Accessing to the view context in the Persistent Container
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        //FIXME: - This is not the proper way
-        if contentField.text != "" {
-            self.entryContent = contentField.text!
+        do {
+            try setContent(content: contentField.text)
+            
+            //Creating the journal Entry in the context
+            JournalEntry.journalEntryWIth(dateCreation: entryDateCreation, title: entryTitle!, content: entryContent, image: entryImage!, mood: entryMood!, location: entryLocation, context: context)
+            
+            
+            //Save the data into the database
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            
+            //Fpop back to the navigation controller
+            navigationController!.popViewController(animated: true)
+        } catch ErrorType.entryContentIsEmpty {
+            self.displayAlert(title: "\(ErrorType.entryContentIsEmpty)", message: ErrorType.entryContentIsEmpty.rawValue)
+        } catch ErrorType.exceededCharactersLimit {
+            self.displayAlert(title: "\(ErrorType.exceededCharactersLimit)", message: ErrorType.exceededCharactersLimit.rawValue)
+        } catch {
+            self.displayAlert(title: "unknownError", message: "Some error has occured")
         }
-        
-        //Creating the journal Entry in the context
-        JournalEntry.journalEntryWIth(dateCreation: entryDateCreation, title: entryTitle!, content: entryContent, image: entryImage!, mood: entryMood!, location: entryLocation, context: context)
-        
-        
-        //Save the data into the database
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        
-        
-        //Fpop back to the navigation controller
-        navigationController!.popViewController(animated: true)
         
     }
 
@@ -90,8 +96,7 @@ class AddEntryViewController: UIViewController {
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
             } else {
-                //FIXME: - present an alert
-                print("camera not aviable")
+                self.displayAlert(title: "\(ErrorType.noCameraAvailable)", message: ErrorType.noCameraAvailable.rawValue)
             }
         }))
         
@@ -116,11 +121,10 @@ class AddEntryViewController: UIViewController {
     
     @IBAction func addLocationButtonAction(_ sender: UIButton) {
         //Activating the Activity Indicator
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
+        
         //Renaming the button
         sender.setTitle("Loading Location", for: .normal)
-        
+        self.startActivityIndicator()
         //Location stuff
         locationManager = LocationManager()
         locationManager.onLocationFix = { placemark, error in
@@ -132,14 +136,31 @@ class AddEntryViewController: UIViewController {
                 sender.setTitle("\(city), \(area)", for: .normal)
                 
                 //Disabling the Activity Indicator
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
+                self.stopActivityIndicator()
+            } else {
+                self.stopActivityIndicator()
+                self.displayAlert(title: "\(ErrorType.errorGettingLocation)", message: ErrorType.errorGettingLocation.rawValue)
+                sender.setTitle("Tapp to add location", for: .normal)
             }
         }
     }
     
     
     // MARK: - Helpers
+    
+    /**this func will start the activity indicator */
+    func startActivityIndicator() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    /**this func will stop the activity indicator */
+    func stopActivityIndicator() {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+    }
+    
+    
     /** This func will style the view, and will setup the basic variables for the entry creation */
     func setupView() {
         
@@ -170,6 +191,19 @@ class AddEntryViewController: UIViewController {
         titleLabel.text = entryTitle
     }
     
+    /**This func will set the content */
+    func setContent(content: String?) throws {
+        guard let content = content, content != "" else {
+            throw ErrorType.entryContentIsEmpty
+        }
+        
+        if charsWritten > limitOfChars {
+            throw ErrorType.exceededCharactersLimit
+        }
+        
+        entryContent = content
+    }
+    
     /**This func will set the image of the Entry */
     func setImageEntry(with image: UIImage) {
         entryImage = image
@@ -190,10 +224,31 @@ class AddEntryViewController: UIViewController {
         }
     }
 
-    //This func will close the the keyboard
+    /**This func will close the the keyboard */
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+    /**This func will update the the chars limitLabel */
+    func updateCharsLimitLabel(with nChars: Int, limit: Int) {
+        charsLimitLabel.text = "\(nChars) / \(limit)"
+        
+        if nChars <= limit {
+            charsLimitLabel.textColor = UIColor.darkGray
+        } else {
+            charsLimitLabel.textColor = UIColor.red
+        }
+    }
+    
+    /**This func will display an Alert */
+    func displayAlert(title: String, message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
 }
@@ -213,4 +268,22 @@ extension AddEntryViewController: UIImagePickerControllerDelegate, UINavigationC
         picker.dismiss(animated: true, completion: nil)
     }
     
+}
+
+//Using UITextViewDelegate
+extension AddEntryViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        charsWritten = textView.attributedText.length
+        updateCharsLimitLabel(with: charsWritten, limit: limitOfChars)
+    }
+}
+
+//Adding Error Types
+extension AddEntryViewController {
+    enum ErrorType: String, Error {
+        case entryContentIsEmpty = "The content for the entry is missing."
+        case exceededCharactersLimit = "You have exceeded the characters limit."
+        case noCameraAvailable = "The device does not have any camera availabe."
+        case errorGettingLocation = "Ther's been a problem retrieving your location"
+    }
 }

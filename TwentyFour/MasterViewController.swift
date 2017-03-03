@@ -54,7 +54,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        //FIXME: - this should be divided into different sections, depending on the month
+        //FIXME: - ì
         return 1
     }
 
@@ -91,8 +91,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             //Requesting..
             journalEntries = try context.fetch(fetchRequest)
         } catch {
-            //FIXME: - Handle the erros
-            print("Fetch failed")
+            self.displayAlert(title: "FetchingError", message: "Thers been a problem retrieving data from the database")
         }
     }
     
@@ -139,6 +138,16 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         
         //updating the title
         self.title = formatter.string(from: date)
+    }
+    
+    /**This func will display an Alert */
+    func displayAlert(title: String, message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     
