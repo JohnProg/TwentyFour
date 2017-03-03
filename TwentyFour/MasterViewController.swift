@@ -43,11 +43,13 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            /*
+            
             if let indexPath = self.tableView.indexPathForSelectedRow {
-            //TODO: - show details for entry
+                //TODO: - show details for entry
+                let controller = (segue.destination) as! DetailViewController
+                controller.journalEntry = journalEntries[indexPath.row]
             }
-             */
+            
         }
     }
 

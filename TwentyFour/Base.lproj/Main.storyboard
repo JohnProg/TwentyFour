@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_happy" translatesAutoresizingMaskIntoConstraints="NO" id="Sz9-5a-jYY">
-                                <rect key="frame" x="335" y="211" width="32" height="32"/>
+                                <rect key="frame" x="311" y="211" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="WbW-gN-g6d"/>
                                     <constraint firstAttribute="height" constant="32" id="Xek-Fh-2cs"/>
@@ -47,16 +47,16 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NGO-W8-z8b">
-                                <rect key="frame" x="16" y="437" width="319" height="39"/>
+                                <rect key="frame" x="16" y="437" width="295" height="39"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pd2-Q4-gYn">
-                                        <rect key="frame" x="0.0" y="0.0" width="319" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="15.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here goes the Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTM-Is-mfD">
-                                        <rect key="frame" x="0.0" y="23.5" width="319" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="23.5" width="295" height="15.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Sz9-5a-jYY" secondAttribute="trailing" constant="8" id="112-dF-spl"/>
+                            <constraint firstAttribute="trailing" secondItem="Sz9-5a-jYY" secondAttribute="trailing" constant="32" id="112-dF-spl"/>
                             <constraint firstItem="NGO-W8-z8b" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" id="2N2-i4-xEa"/>
                             <constraint firstItem="NGO-W8-z8b" firstAttribute="top" secondItem="vLm-sO-ZTd" secondAttribute="bottom" constant="24" id="6dc-3g-k0g"/>
                             <constraint firstItem="Sz9-5a-jYY" firstAttribute="leading" secondItem="NGO-W8-z8b" secondAttribute="trailing" id="Dsu-x5-sdP"/>

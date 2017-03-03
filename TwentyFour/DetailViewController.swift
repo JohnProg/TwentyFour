@@ -8,9 +8,13 @@
 
 import UIKit
 
+
 class DetailViewController: UIViewController {
-    @IBOutlet weak var imageView: UIImageView!
     
+    
+    //MARK - Outlets 
+    
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var moodIconView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var locationStackView: UIStackView!
@@ -18,10 +22,22 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var updateStackView: UIStackView!
     @IBOutlet weak var updateLabel: UILabel!
     
+    //MARK - Variables 
+    
+    var journalEntry: JournalEntry?
+    fileprivate var locationManager: LocationManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        do {
+            try setupView()
+        } catch ErrorType.entryIsNil {
+            displayAlert(title: "(ErrorType.entryIsNil)", message: ErrorType.entryIsNil.rawValue)
+        } catch {
+            displayAlert(title: "Unknown Error", message: "An unknows error has occurred")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,14 +46,69 @@ class DetailViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Helpers
+    
+    
+    /**This func will setup the view */
+    func setupView() throws {
+        guard let entry = journalEntry else {
+            throw ErrorType.entryIsNil
+        }
+        
+        self.title = entry.title!
+        imageView.image = UIImage(data: entry.image! as Data)
+        textView.text = entry.content!
+        
+        if let location = entry.location {
+            //setting the location
+            locationManager = LocationManager()
+            locationManager.onLocationFix = { placemark, error in
+                if let placemark = placemark {
+                    guard let city = placemark.locality, let area = placemark.administrativeArea else { return }
+                    
+                    self.locationLabel.text = "\(city), \(area)"
+                }
+            }
+            locationManager.reverseGeoLoc(coordinate: (location.latitude, location.longitude))
+        } else {
+            locationStackView.isHidden = true
+        }
+        
+        if let lastUpdate = entry.dateLastUpdate {
+            updateLabel.text = setStringFromDate(date: lastUpdate as Date)
+        } else {
+            updateStackView.isHidden = true
+        }
+        
     }
-    */
+    
+    /**This func will display an alert */
+    func displayAlert(title: String, message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    /**This func will convert the date into a readble string */
+    func setStringFromDate(date: Date) -> String {
+        //creating the formatter and choosing the styles
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        
+        //updating the title
+        return formatter.string(from: date)
+    }
+ 
 
+}
+
+//MARK - Errors definition
+extension DetailViewController {
+    enum ErrorType: String, Error {
+        case entryIsNil = "Ther's been a problem with the entry's data"
+    }
 }
