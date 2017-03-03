@@ -118,7 +118,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             if let placemark = placemark {
                 guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
                 
-                cell.locationLabel.text = "\(name), \(city), \(area)"
+                cell.locationLabel.text = "\(city), \(area)"
             }
         }
         guard let location = entry.location else {

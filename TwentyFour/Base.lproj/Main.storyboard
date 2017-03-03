@@ -416,8 +416,11 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fq2-Dl-lhw">
                                                         <rect key="frame" x="0.0" y="30" width="343" height="40"/>
                                                         <subviews>
+                                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3GX-Xb-iFD">
+                                                                <rect key="frame" x="0.0" y="0.0" width="20" height="40"/>
+                                                            </activityIndicatorView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDI-V4-bRW">
-                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                                                <rect key="frame" x="20" y="0.0" width="323" height="40"/>
                                                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="Tap to add location"/>
                                                                 <connections>
@@ -453,6 +456,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="3GX-Xb-iFD" id="wY5-WX-LBB"/>
                         <outlet property="charsLimitLabel" destination="wZm-zD-1Ky" id="PSm-5a-qzk"/>
                         <outlet property="contentField" destination="jVK-Bq-ewZ" id="DA0-hU-Xqu"/>
                         <outlet property="imageButton" destination="P6O-SB-K2D" id="YuR-KC-mtK"/>

@@ -17,6 +17,7 @@ class AddEntryViewController: UIViewController {
     @IBOutlet weak var contentField: UITextView!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var moodSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     // MARK: - Entry Varaibles
@@ -82,13 +83,25 @@ class AddEntryViewController: UIViewController {
     }
     
     @IBAction func addLocationButtonAction(_ sender: UIButton) {
+        //Activating the Activity Indicator
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        //Renaming the button
+        sender.setTitle("Loading Location", for: .normal)
+        
+        //Location stuff
         locationManager = LocationManager()
         locationManager.onLocationFix = { placemark, error in
             if let placemark = placemark {
                 self.entryLocation = placemark.location
-                guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
+                guard let city = placemark.locality, let area = placemark.administrativeArea else { return }
                 
-                sender.setTitle("\(name), \(city), \(area)", for: .normal)
+                //Renaming the button the the location info
+                sender.setTitle("\(city), \(area)", for: .normal)
+                
+                //Disabling the Activity Indicator
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
             }
         }
     }
@@ -106,6 +119,8 @@ class AddEntryViewController: UIViewController {
         setTitleFrom(date: entryDateCreation)
         setImageEntry(with: imageButton.currentImage!)
         setMoodEntry(segment: moodSegmentedControl)
+        
+        activityIndicator.isHidden = true
     }
     
     /** This func will set the Title starting from a date: Date*/
