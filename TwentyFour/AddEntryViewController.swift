@@ -76,12 +76,14 @@ class AddEntryViewController: UIViewController {
 
     @IBAction func addImageButtonAction(_ sender: UIButton) {
         
+        //Creating an ImagePickerController
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         
-        
+        //Creating an Action Sheet
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a Source", preferredStyle: .actionSheet)
-
+        
+        //Adding action to the Action Sheet: for Vamera
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
             //Code
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -89,19 +91,21 @@ class AddEntryViewController: UIViewController {
                 self.present(imagePickerController, animated: true, completion: nil)
             } else {
                 //FIXME: - present an alert
-                print("camera non aviable")
+                print("camera not aviable")
             }
-            
         }))
         
+        //Adding action to the Action Sheet: for Library
         actionSheet.addAction(UIAlertAction(title: "Library", style: .default, handler: { (action:UIAlertAction) in
             //Code
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true, completion: nil)
         }))
         
+        //Adding action to the Action Sheet: for Cancel
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
+        //Presenting the Action Sheet
         self.present(actionSheet, animated: true, completion: nil)
         
     }
@@ -194,14 +198,14 @@ class AddEntryViewController: UIViewController {
     
 }
 
-
+//Conforming to delegates for the image picker
 extension AddEntryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         let image = info [UIImagePickerControllerOriginalImage] as! UIImage
-        
         imageView.image = image
-        
+        setImageEntry(with: image)
         picker.dismiss(animated: true, completion: nil)
     }
     
