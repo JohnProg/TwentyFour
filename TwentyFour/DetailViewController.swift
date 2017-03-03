@@ -12,7 +12,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     
-    //MARK - Outlets 
+    //MARK: - Outlets
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var moodIconView: UIImageView!
@@ -22,7 +22,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var updateStackView: UIStackView!
     @IBOutlet weak var updateLabel: UILabel!
     
-    //MARK - Variables 
+    //MARK: - Variables
     
     var journalEntry: JournalEntry?
     fileprivate var locationManager: LocationManager!
@@ -45,7 +45,17 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK - Actions
+    //MARK: Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editEntry" {
+            let controller = (segue.destination) as! EditViewController
+        }
+        
+    }
+
+
+    //MARK: - Actions
     
     
     @IBAction func editAction(_ sender: Any) {
@@ -56,13 +66,17 @@ class DetailViewController: UIViewController {
         //Adding action to the Action Sheet: for Vamera
         actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action:UIAlertAction) in
             //Code
+            self.displayEditView()
             
         }))
         
         //Adding action to the Action Sheet: for Library
         actionSheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action:UIAlertAction) in
             //displaying the alert to ask confirmation
+            
             let alertController = UIAlertController(title: "Delete Entry", message: "Are you sure you want to delete this entry?", preferredStyle: .alert)
+            
+            
             let confirm = UIAlertAction(title: "Confirm", style: .destructive, handler: {(alert: UIAlertAction!) in self.deleteEntry(entry: self.journalEntry!)})
             let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alertController.addAction(confirm)
@@ -152,11 +166,22 @@ class DetailViewController: UIViewController {
         //Fpop back to the navigation controller
         navigationController!.popViewController(animated: true)
     }
+    
+    /**This func will displau the edit view */
+    func displayEditView() {
+        guard let vc = UIStoryboard(name:"Edit", bundle:nil).instantiateViewController(withIdentifier: "edit") as? EditViewController else {
+            print("Could not instantiate view controller with identifier of type EditViewController")
+            return
+        }
+        
+        vc.journalEntry = self.journalEntry
+        self.navigationController?.pushViewController(vc, animated:true)
+    }
  
 
 }
 
-//MARK - Errors definition
+//MARK: - Errors definition
 extension DetailViewController {
     enum ErrorType: String, Error {
         case entryIsNil = "Ther's been a problem with the entry's data"

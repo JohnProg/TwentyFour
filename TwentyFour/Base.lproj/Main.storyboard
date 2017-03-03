@@ -122,6 +122,46 @@
             </objects>
             <point key="canvasLocation" x="2836" y="-106.59670164917542"/>
         </scene>
+        <!--Edit Entry-->
+        <scene sceneID="hVw-uD-Ks9">
+            <objects>
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="eg8-7T-kYj" customClass="EditViewController" customModule="TwentyFour" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="51y-ra-F8l"/>
+                        <viewControllerLayoutGuide type="bottom" id="kSl-Nu-ZWX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yO9-cM-zwN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="NuX-Tx-wXQ">
+                                <rect key="frame" x="16" y="36" width="343" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="C1C-1W-i9n"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NuX-Tx-wXQ" firstAttribute="top" secondItem="51y-ra-F8l" secondAttribute="bottom" constant="16" id="20b-06-M4r"/>
+                            <constraint firstItem="NuX-Tx-wXQ" firstAttribute="leading" secondItem="yO9-cM-zwN" secondAttribute="leadingMargin" id="DJl-Vd-Hdt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NuX-Tx-wXQ" secondAttribute="trailing" id="Ltb-5V-Mzo"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Edit Entry" id="Mqg-1h-5kq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="woh-ye-rMn"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B8D-nY-cMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3588" y="-106"/>
+        </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
             <objects>

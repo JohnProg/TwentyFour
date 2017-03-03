@@ -10,6 +10,7 @@
 		010B35581E61D572006D57F2 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B35571E61D572006D57F2 /* AddEntryViewController.swift */; };
 		010B359E1E634549006D57F2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B359D1E634549006D57F2 /* TableViewCell.swift */; };
 		01337F891E69DD9200DDDF7F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01337F881E69DD9200DDDF7F /* DetailViewController.swift */; };
+		01337F8B1E69F99600DDDF7F /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01337F8A1E69F99600DDDF7F /* EditViewController.swift */; };
 		0163B7541E604C4F00BE1829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7531E604C4F00BE1829 /* AppDelegate.swift */; };
 		0163B7571E604C4F00BE1829 /* TwentyFour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7551E604C4F00BE1829 /* TwentyFour.xcdatamodeld */; };
 		0163B7591E604C4F00BE1829 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7581E604C4F00BE1829 /* MasterViewController.swift */; };
@@ -44,6 +45,7 @@
 		010B35571E61D572006D57F2 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEntryViewController.swift; sourceTree = "<group>"; };
 		010B359D1E634549006D57F2 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		01337F881E69DD9200DDDF7F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		01337F8A1E69F99600DDDF7F /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		0163B7501E604C4F00BE1829 /* TwentyFour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwentyFour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0163B7531E604C4F00BE1829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0163B7561E604C4F00BE1829 /* TwentyFour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TwentyFour.xcdatamodel; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				0163B7581E604C4F00BE1829 /* MasterViewController.swift */,
 				010B359D1E634549006D57F2 /* TableViewCell.swift */,
 				01337F881E69DD9200DDDF7F /* DetailViewController.swift */,
+				01337F8A1E69F99600DDDF7F /* EditViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01337F8B1E69F99600DDDF7F /* EditViewController.swift in Sources */,
 				01337F891E69DD9200DDDF7F /* DetailViewController.swift in Sources */,
 				0163B7571E604C4F00BE1829 /* TwentyFour.xcdatamodeld in Sources */,
 				0163B7541E604C4F00BE1829 /* AppDelegate.swift in Sources */,
