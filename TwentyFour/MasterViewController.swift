@@ -116,7 +116,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         locationManager = LocationManager()
         locationManager.onLocationFix = { placemark, error in
             if let placemark = placemark {
-                guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
+                guard let city = placemark.locality, let area = placemark.administrativeArea else { return }
                 
                 cell.locationLabel.text = "\(city), \(area)"
             }
