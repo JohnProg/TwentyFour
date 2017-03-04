@@ -17,29 +17,10 @@
 		0163B75E1E604C4F00BE1829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0163B75C1E604C4F00BE1829 /* Main.storyboard */; };
 		0163B7601E604C4F00BE1829 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0163B75F1E604C4F00BE1829 /* Assets.xcassets */; };
 		0163B7631E604C4F00BE1829 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0163B7611E604C4F00BE1829 /* LaunchScreen.storyboard */; };
-		0163B76E1E604C4F00BE1829 /* TwentyFourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B76D1E604C4F00BE1829 /* TwentyFourTests.swift */; };
-		0163B7791E604C4F00BE1829 /* TwentyFourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B7781E604C4F00BE1829 /* TwentyFourUITests.swift */; };
 		0163B78B1E6079BE00BE1829 /* LocationManagaer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163B78A1E6079BE00BE1829 /* LocationManagaer.swift */; };
 		01F46C3A1E641303004B34C2 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F46C391E641303004B34C2 /* JournalEntry.swift */; };
 		01F46C3C1E641310004B34C2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F46C3B1E641310004B34C2 /* Location.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		0163B76A1E604C4F00BE1829 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0163B7481E604C4F00BE1829 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0163B74F1E604C4F00BE1829;
-			remoteInfo = TwentyFour;
-		};
-		0163B7751E604C4F00BE1829 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0163B7481E604C4F00BE1829 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0163B74F1E604C4F00BE1829;
-			remoteInfo = TwentyFour;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		010B35571E61D572006D57F2 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEntryViewController.swift; sourceTree = "<group>"; };
@@ -54,12 +35,6 @@
 		0163B75F1E604C4F00BE1829 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0163B7621E604C4F00BE1829 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0163B7641E604C4F00BE1829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0163B7691E604C4F00BE1829 /* TwentyFourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwentyFourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0163B76D1E604C4F00BE1829 /* TwentyFourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyFourTests.swift; sourceTree = "<group>"; };
-		0163B76F1E604C4F00BE1829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0163B7741E604C4F00BE1829 /* TwentyFourUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwentyFourUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0163B7781E604C4F00BE1829 /* TwentyFourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyFourUITests.swift; sourceTree = "<group>"; };
-		0163B77A1E604C4F00BE1829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0163B78A1E6079BE00BE1829 /* LocationManagaer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagaer.swift; sourceTree = "<group>"; };
 		01F46C391E641303004B34C2 /* JournalEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		01F46C3B1E641310004B34C2 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -73,20 +48,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0163B7661E604C4F00BE1829 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0163B7711E604C4F00BE1829 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -94,8 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				0163B7521E604C4F00BE1829 /* TwentyFour */,
-				0163B76C1E604C4F00BE1829 /* TwentyFourTests */,
-				0163B7771E604C4F00BE1829 /* TwentyFourUITests */,
 				0163B7511E604C4F00BE1829 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,8 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				0163B7501E604C4F00BE1829 /* TwentyFour.app */,
-				0163B7691E604C4F00BE1829 /* TwentyFourTests.xctest */,
-				0163B7741E604C4F00BE1829 /* TwentyFourUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,24 +78,6 @@
 				0163B7861E60767A00BE1829 /* Models */,
 			);
 			path = TwentyFour;
-			sourceTree = "<group>";
-		};
-		0163B76C1E604C4F00BE1829 /* TwentyFourTests */ = {
-			isa = PBXGroup;
-			children = (
-				0163B76D1E604C4F00BE1829 /* TwentyFourTests.swift */,
-				0163B76F1E604C4F00BE1829 /* Info.plist */,
-			);
-			path = TwentyFourTests;
-			sourceTree = "<group>";
-		};
-		0163B7771E604C4F00BE1829 /* TwentyFourUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0163B7781E604C4F00BE1829 /* TwentyFourUITests.swift */,
-				0163B77A1E604C4F00BE1829 /* Info.plist */,
-			);
-			path = TwentyFourUITests;
 			sourceTree = "<group>";
 		};
 		0163B7861E60767A00BE1829 /* Models */ = {
@@ -201,42 +140,6 @@
 			productReference = 0163B7501E604C4F00BE1829 /* TwentyFour.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0163B7681E604C4F00BE1829 /* TwentyFourTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0163B7801E604C4F00BE1829 /* Build configuration list for PBXNativeTarget "TwentyFourTests" */;
-			buildPhases = (
-				0163B7651E604C4F00BE1829 /* Sources */,
-				0163B7661E604C4F00BE1829 /* Frameworks */,
-				0163B7671E604C4F00BE1829 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0163B76B1E604C4F00BE1829 /* PBXTargetDependency */,
-			);
-			name = TwentyFourTests;
-			productName = TwentyFourTests;
-			productReference = 0163B7691E604C4F00BE1829 /* TwentyFourTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		0163B7731E604C4F00BE1829 /* TwentyFourUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0163B7831E604C4F00BE1829 /* Build configuration list for PBXNativeTarget "TwentyFourUITests" */;
-			buildPhases = (
-				0163B7701E604C4F00BE1829 /* Sources */,
-				0163B7711E604C4F00BE1829 /* Frameworks */,
-				0163B7721E604C4F00BE1829 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0163B7761E604C4F00BE1829 /* PBXTargetDependency */,
-			);
-			name = TwentyFourUITests;
-			productName = TwentyFourUITests;
-			productReference = 0163B7741E604C4F00BE1829 /* TwentyFourUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -251,18 +154,6 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 23536XD8LD;
 						ProvisioningStyle = Automatic;
-					};
-					0163B7681E604C4F00BE1829 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 23536XD8LD;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 0163B74F1E604C4F00BE1829;
-					};
-					0163B7731E604C4F00BE1829 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 23536XD8LD;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 0163B74F1E604C4F00BE1829;
 					};
 				};
 			};
@@ -280,8 +171,6 @@
 			projectRoot = "";
 			targets = (
 				0163B74F1E604C4F00BE1829 /* TwentyFour */,
-				0163B7681E604C4F00BE1829 /* TwentyFourTests */,
-				0163B7731E604C4F00BE1829 /* TwentyFourUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -294,20 +183,6 @@
 				0163B7631E604C4F00BE1829 /* LaunchScreen.storyboard in Resources */,
 				0163B7601E604C4F00BE1829 /* Assets.xcassets in Resources */,
 				0163B75E1E604C4F00BE1829 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0163B7671E604C4F00BE1829 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0163B7721E604C4F00BE1829 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,36 +206,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0163B7651E604C4F00BE1829 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0163B76E1E604C4F00BE1829 /* TwentyFourTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0163B7701E604C4F00BE1829 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0163B7791E604C4F00BE1829 /* TwentyFourUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0163B76B1E604C4F00BE1829 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0163B74F1E604C4F00BE1829 /* TwentyFour */;
-			targetProxy = 0163B76A1E604C4F00BE1829 /* PBXContainerItemProxy */;
-		};
-		0163B7761E604C4F00BE1829 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0163B74F1E604C4F00BE1829 /* TwentyFour */;
-			targetProxy = 0163B7751E604C4F00BE1829 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0163B75C1E604C4F00BE1829 /* Main.storyboard */ = {
@@ -501,64 +347,6 @@
 			};
 			name = Release;
 		};
-		0163B7811E604C4F00BE1829 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 23536XD8LD;
-				INFOPLIST_FILE = TwentyFourTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "AndreaMiotto-com.github.TwentyFourTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwentyFour.app/TwentyFour";
-			};
-			name = Debug;
-		};
-		0163B7821E604C4F00BE1829 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 23536XD8LD;
-				INFOPLIST_FILE = TwentyFourTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "AndreaMiotto-com.github.TwentyFourTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwentyFour.app/TwentyFour";
-			};
-			name = Release;
-		};
-		0163B7841E604C4F00BE1829 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 23536XD8LD;
-				INFOPLIST_FILE = TwentyFourUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "AndreaMiotto-com.github.TwentyFourUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = TwentyFour;
-			};
-			name = Debug;
-		};
-		0163B7851E604C4F00BE1829 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 23536XD8LD;
-				INFOPLIST_FILE = TwentyFourUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "AndreaMiotto-com.github.TwentyFourUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = TwentyFour;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -576,24 +364,6 @@
 			buildConfigurations = (
 				0163B77E1E604C4F00BE1829 /* Debug */,
 				0163B77F1E604C4F00BE1829 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0163B7801E604C4F00BE1829 /* Build configuration list for PBXNativeTarget "TwentyFourTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0163B7811E604C4F00BE1829 /* Debug */,
-				0163B7821E604C4F00BE1829 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0163B7831E604C4F00BE1829 /* Build configuration list for PBXNativeTarget "TwentyFourUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0163B7841E604C4F00BE1829 /* Debug */,
-				0163B7851E604C4F00BE1829 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
