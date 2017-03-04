@@ -197,7 +197,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="220"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dhz-ix-wrJ" id="f4h-Gv-Mfp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trU-D8-zEI">
@@ -288,8 +288,14 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvG-z8-hqL">
                                                             <rect key="frame" x="0.0" y="167.5" width="295" height="20"/>
                                                             <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_geolocate" translatesAutoresizingMaskIntoConstraints="NO" id="2Ko-a4-iZM">
+                                                                    <rect key="frame" x="10" y="0.0" width="20" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="20" id="KSv-99-cwH"/>
+                                                                    </constraints>
+                                                                </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manna Avenue - Wilmington, NC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQQ-vR-0Nd">
-                                                                    <rect key="frame" x="10" y="2.5" width="275" height="14.5"/>
+                                                                    <rect key="frame" x="38" y="0.0" width="247" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -297,10 +303,14 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstItem="RQQ-vR-0Nd" firstAttribute="leading" secondItem="wvG-z8-hqL" secondAttribute="leading" constant="10" id="7Uf-aP-Sri"/>
-                                                                <constraint firstAttribute="trailing" secondItem="RQQ-vR-0Nd" secondAttribute="trailing" constant="10" id="Tz9-9k-XRt"/>
-                                                                <constraint firstItem="RQQ-vR-0Nd" firstAttribute="centerY" secondItem="wvG-z8-hqL" secondAttribute="centerY" id="aDM-9c-jrw"/>
+                                                                <constraint firstAttribute="bottom" secondItem="RQQ-vR-0Nd" secondAttribute="bottom" id="4LI-FB-laz"/>
+                                                                <constraint firstItem="2Ko-a4-iZM" firstAttribute="leading" secondItem="wvG-z8-hqL" secondAttribute="leading" constant="10" id="Ihc-TF-Fo0"/>
+                                                                <constraint firstItem="RQQ-vR-0Nd" firstAttribute="leading" secondItem="2Ko-a4-iZM" secondAttribute="trailing" constant="8" id="PPV-4C-YHK"/>
+                                                                <constraint firstAttribute="bottom" secondItem="2Ko-a4-iZM" secondAttribute="bottom" id="TAe-HE-1LF"/>
+                                                                <constraint firstItem="RQQ-vR-0Nd" firstAttribute="top" secondItem="wvG-z8-hqL" secondAttribute="top" id="n4f-cA-JHY"/>
                                                                 <constraint firstAttribute="height" constant="20" id="sgY-ox-q80"/>
+                                                                <constraint firstAttribute="trailing" secondItem="RQQ-vR-0Nd" secondAttribute="trailing" constant="10" id="xUu-ku-Mcd"/>
+                                                                <constraint firstItem="2Ko-a4-iZM" firstAttribute="top" secondItem="wvG-z8-hqL" secondAttribute="top" id="yWO-ON-1jM"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -318,6 +328,7 @@
                                 <connections>
                                     <outlet property="contentLabel" destination="P2x-Ym-3MN" id="aCM-vb-Rh2"/>
                                     <outlet property="entryImageView" destination="KQV-9V-kR2" id="qgA-ud-Mr6"/>
+                                    <outlet property="locIconImageView" destination="2Ko-a4-iZM" id="kzO-nF-Wf8"/>
                                     <outlet property="locationLabel" destination="RQQ-vR-0Nd" id="mEG-qG-aGu"/>
                                     <outlet property="moodIconView" destination="bge-Ix-izM" id="P2s-8g-G30"/>
                                     <outlet property="titleLabel" destination="EsY-3n-b09" id="vaB-Q1-anp"/>
@@ -345,7 +356,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="-630"/>
+            <point key="canvasLocation" x="1612" y="-630.13493253373315"/>
         </scene>
         <!--New Journal Entry-->
         <scene sceneID="MyI-sw-ezI">
@@ -641,6 +652,7 @@
         <image name="icn_average" width="25" height="25"/>
         <image name="icn_average_lrg" width="14" height="14"/>
         <image name="icn_bad_lrg" width="15" height="15"/>
+        <image name="icn_geolocate" width="17" height="17"/>
         <image name="icn_good_lrg" width="15" height="15"/>
         <image name="icn_happy" width="25" height="25"/>
     </resources>

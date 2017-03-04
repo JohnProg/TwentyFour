@@ -13,6 +13,7 @@ import CoreLocation
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     
+    
     //MARK: - Variables
     var journalEntries: [JournalEntry] = []
     fileprivate var locationManager: LocationManager!
@@ -71,6 +72,14 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     
 
     //MARK: - Helpers
@@ -123,7 +132,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             }
         }
         guard let location = entry.location else {
-            cell.locationLabel.text = ""
+            cell.locIconImageView.isHidden = true
+            cell.locationLabel.isHidden = true
             return
         }
         locationManager.reverseGeoLoc(coordinate: (location.latitude, location.longitude))
