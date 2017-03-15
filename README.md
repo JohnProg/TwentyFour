@@ -1,11 +1,9 @@
 # TwentyFour
 An iOS Perosanl Diary App based on Core Data.
 
-##Snapshots
+## Snapshots
 
-<img width="270" alt="addEntry" src="https://cloud.githubusercontent.com/assets/11211914/23580286/8837dae6-00fe-11e7-8754-8336f06cc008.gif">
-<img width="270" alt="editEntry" src="https://cloud.githubusercontent.com/assets/11211914/23580285/88374342-00fe-11e7-8e92-be57c70d3dee.gif">
-<img width="270" alt="deleteEntry" src="https://cloud.githubusercontent.com/assets/11211914/23580284/8811213a-00fe-11e7-84a3-f4849dcbc4a9.gif">
+<img width="270" alt="addEntry" src="https://cloud.githubusercontent.com/assets/11211914/23580286/8837dae6-00fe-11e7-8754-8336f06cc008.gif"> <img width="270" alt="editEntry" src="https://cloud.githubusercontent.com/assets/11211914/23580285/88374342-00fe-11e7-8e92-be57c70d3dee.gif"> <img width="270" alt="deleteEntry" src="https://cloud.githubusercontent.com/assets/11211914/23580284/8811213a-00fe-11e7-84a3-f4849dcbc4a9.gif">
 
 ## Explanation
 The Twenty Four is a Swift app builded during the Techdegree at <a href="https://teamtreehouse.com">Treehouse</a>
@@ -14,7 +12,7 @@ The goal was to develop a Core Data based app in Swift.
 I was the respondible for creating the data layer, the UI, as well as all other aspects.
 
 
-##Features
+## Features
 
 This is a list of the features:
 
@@ -48,7 +46,7 @@ In addition anyone who decides to download this app is invited to create a new b
 For any questions or problems, please contact me.
 If you find bugs or problems, please report them.
 
-##Techdegree's Instruction Project
+## Techdegree's Instruction Project
 
 >For this project, you will create a Core Data-based Diary App in Swift. 
 >You will be responsible for creating the data layer, the UI, as well as all other aspects. 
